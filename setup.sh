@@ -18,7 +18,7 @@ sudo dnf install -y \
     vim @virtualization bridge-utils timeshift neovim qdirstat \
     qt5ct gns3-gui gns3-server tldr fastfetch lsd make trash-cli \
     fzf bat ripgrep gnome-tweaks fail2ban fastfetch papirus-icon-theme \
-    epapirus-icon-theme google-chrome-stable
+    epapirus-icon-theme google-chrome-stable ufw
 
 echo "Installing Flatpak apps..."
 flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.missioncenter.MissionCenter com.obsproject.Studio com.obsproject.Studio.Plugin.DroidCam
