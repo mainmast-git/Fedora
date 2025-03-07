@@ -45,7 +45,7 @@ gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell fav
 gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed "s/]$/, 'gns3.desktop']/")"
 
 # Unpin favorite apps from the Fedora dock
-gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed "s/, 'firefox_firefox.desktop'//" | sed "s/'firefox_firefox.desktop', //")"
+gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed "s/, 'org.mozilla.firefox.desktop'//" | sed "s/'org.mozilla.firefox.desktop', //")"
 
 # Remove apps I don't need
 sudo dnf remove -y firefox
