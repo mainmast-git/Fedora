@@ -6,6 +6,12 @@ echo "Starting Fedora Post-Installation Setup..."
 echo "Updating and upgrading the system..."
 sudo dnf update -y && sudo dnf upgrade -y && flatpak update -y
 
+# Enable free & nonfree repositories
+echo "Enabling free and nonfree repositories..."
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf update -y
+
 # Install APT Packages
 echo "Installing required packages..."
 sudo dnf install -y \
