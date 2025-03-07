@@ -14,15 +14,12 @@ sudo dnf install -y \
     qt5ct qt5-style-kvantum qt5-style-kvantum-themes gns3-gui \
     gns3-server libminizip1 libxcb-xinerama0 tldr fastfetch lsd \
     make gawk trash-cli fzf bash-completion whois bat tree \
-    ripgrep gnome-tweaks plocate fail2ban fastfetch gns3-iou
+    ripgrep gnome-tweaks plocate fail2ban fastfetch gns3-iou \
+	papirus-icon-theme epapirus-icon-theme
 
-# Add Paprius PPA
-sudo dnf install -y papirus-icon-theme epapirus-icon-theme # Papirus, Papirus-Dark, and Papirus-Light
-
-# Setup qt5ct theme for KDE applications
-echo "Setting up theme (Fusion + GTK3 + darker) for KDE..."
-qt5ct # For user
-sudo qt5ct # For super user 
+echo "Installing Flatpak apps..."
+flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.github.shiftey.Desktop io.missioncenter.MissionCenter com.obsproject.Studio
+flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
 
 # Install .rpm Packages
 echo "Downloading and installing Google Chrome & TeamViewer..."
@@ -30,13 +27,10 @@ wget -O /tmp/google-chrome.rpm https://dl.google.com/linux/direct/google-chrome-
 wget -O /tmp/teamviewer.rpm https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
 sudo dnf install -y /tmp/google-chrome.rpm /tmp/teamviewer.rpm
 
-# Install Flatpak and Flathub repository
-echo "Setting up Flatpak..."
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-echo "Installing Flatpak apps..."
-flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.github.shiftey.Desktop io.missioncenter.MissionCenter com.obsproject.Studio
-flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
+# Setup qt5ct theme for KDE applications
+echo "Setting up theme (Fusion + GTK3 + darker) for KDE..."
+qt5ct # For user
+sudo qt5ct # For super user 
 
 # Set Dark Mode in GNOME
 echo "Configuring GNOME theme..."
@@ -122,9 +116,10 @@ alias uefi='sudo systemctl reboot --firmware-setup'
 EOF
 
 # Set catppuccin mocha theme
-## gnome-terminal
-curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/install.py | python3 -
+
+## Set font to MesloLGS Nerd Font
 gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font 12'
+
 ## bat
 mkdir -p "$(bat --config-dir)/themes"
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
@@ -132,6 +127,7 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
+
 ## Papirus icons
 git clone https://github.com/catppuccin/papirus-folders.git
 cd papirus-folders
@@ -139,6 +135,7 @@ sudo cp -r src/* /usr/share/icons/Papirus
 curl -LO https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-folders/master/papirus-folders && chmod +x ./papirus-folders
 ./papirus-folders -C cat-mocha-lavender --theme Papirus-Dark
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+
 ## GTK 3/4 theming
 cd $HOME
 curl -LsSO "https://raw.githubusercontent.com/catppuccin/gtk/v1.0.3/install.py"
