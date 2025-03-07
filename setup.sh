@@ -65,7 +65,7 @@ sudo mv -f /tmp/Fedora/home/.vimrc $HOME/
 sudo ufw enable
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-sudo systemctl enable fail2ban
+sudo systemctl enable --now fail2ban
 
 # Add custom configuration to .bashrc
 git clone --depth=1 https://github.com/ChrisTitusTech/mybash.git ~/mybash
