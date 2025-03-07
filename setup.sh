@@ -28,6 +28,7 @@ flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
 echo "Downloading and installing TeamViewer..."
 wget -O /tmp/teamviewer.rpm https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
 sudo dnf install -y /tmp/teamviewer.rpm
+sudo dnf update -y
 
 # Setup qt5ct theme for KDE applications
 echo "Setting up theme (Fusion + GTK3 + darker) for KDE..."
