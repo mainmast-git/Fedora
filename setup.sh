@@ -15,7 +15,7 @@ sudo dnf update -y
 # Install APT Packages
 echo "Installing required packages..."
 sudo dnf install -y \
-    vim curl git qemu-kvm bridge-utils virt-manager flatpak \ 
+    vim curl git @virtualization bridge-utils flatpak \ 
     timeshift neovim qdirstat qt5ct qt5-style-kvantum \
     qt5-style-kvantum-themes gns3-gui gns3-server libminizip1 \
     libxcb-xinerama0 tldr fastfetch lsd make gawk trash-cli \
