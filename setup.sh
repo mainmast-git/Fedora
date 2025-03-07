@@ -21,7 +21,7 @@ sudo dnf install -y \
     epapirus-icon-theme google-chrome-stable
 
 echo "Installing Flatpak apps..."
-flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.github.shiftey.Desktop io.missioncenter.MissionCenter com.obsproject.Studio com.obsproject.Studio.Plugin.DroidCam
+flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.missioncenter.MissionCenter com.obsproject.Studio com.obsproject.Studio.Plugin.DroidCam
 flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
 
 # Install .rpm Packages
