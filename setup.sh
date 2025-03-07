@@ -17,7 +17,7 @@ echo "Installing required packages..."
 sudo dnf install -y \
     vim @virtualization bridge-utils timeshift neovim \
     qdirstat qt5ct gns3-gui gns3-server tldr fastfetch \
-    lsd make gawk trash-cli fzf bash-completion whois \
+    lsd make trash-cli fzf bash-completion whois \
     bat tree ripgrep gnome-tweaks plocate fail2ban \
     fastfetch gns3-iou papirus-icon-theme \
     epapirus-icon-theme google-chrome-stable
