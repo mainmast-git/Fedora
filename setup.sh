@@ -4,7 +4,7 @@ echo "Starting Fedora Post-Installation Setup..."
 
 # Update & Upgrade System
 echo "Updating and upgrading the system..."
-sudo dnf update -y; sudo dnf upgrade -y
+sudo dnf update -y && sudo dnf upgrade -y && flatpak update -y
 
 # Install APT Packages
 echo "Installing required packages..."
