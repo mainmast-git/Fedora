@@ -68,6 +68,9 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo systemctl enable --now fail2ban
 
+# Load database for plocate
+sudo updatedb
+
 # Add custom configuration to .bashrc
 git clone --depth=1 https://github.com/ChrisTitusTech/mybash.git ~/mybash
 chmod +x ~/mybash/setup.sh
