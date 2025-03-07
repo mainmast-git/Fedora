@@ -153,7 +153,7 @@ echo "Removing cloned repository..."
 rm -rf /tmp/Fedora
 
 echo "Cleaning up downloaded .rpm files..."
-rm /tmp/google-chrome.rpm /tmp/teamviewer.rpm 
+rm /tmp/teamviewer.rpm 
 
 # Install GNS3 for Fedora and reboot after completed install
 git clone https://github.com/ramin-samadi/FedoraGNS3.git /tmp/FedoraGNS3
