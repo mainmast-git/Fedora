@@ -15,17 +15,17 @@ sudo dnf install -y \
     gns3-server libminizip1 libxcb-xinerama0 tldr fastfetch lsd \
     make gawk trash-cli fzf bash-completion whois bat tree \
     ripgrep gnome-tweaks plocate fail2ban fastfetch gns3-iou \
-	papirus-icon-theme epapirus-icon-theme
+    papirus-icon-theme epapirus-icon-theme google-chrome-stable
+ 
 
 echo "Installing Flatpak apps..."
 flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.github.shiftey.Desktop io.missioncenter.MissionCenter com.obsproject.Studio
 flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
 
 # Install .rpm Packages
-echo "Downloading and installing Google Chrome & TeamViewer..."
-wget -O /tmp/google-chrome.rpm https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+echo "Downloading and installing TeamViewer..."
 wget -O /tmp/teamviewer.rpm https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
-sudo dnf install -y /tmp/google-chrome.rpm /tmp/teamviewer.rpm
+sudo dnf install -y /tmp/teamviewer.rpm
 
 # Setup qt5ct theme for KDE applications
 echo "Setting up theme (Fusion + GTK3 + darker) for KDE..."
