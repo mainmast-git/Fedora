@@ -35,9 +35,10 @@ echo "Setting up theme (Fusion + GTK3 + darker) for KDE..."
 qt5ct # For user
 sudo qt5ct # For super user 
 
-# Set Dark Mode in GNOME
+# Set Dark Mode in GNOME with slate accent color
 echo "Configuring GNOME theme..."
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface accent-color 'slate'
 
 # Pin favorite apps to the Fedora dock
 gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed "s/]$/, 'google-chrome.desktop']/")"
