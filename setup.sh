@@ -21,6 +21,7 @@ sudo dnf install -y \
     epapirus-icon-theme google-chrome-stable ufw
 
 echo "Installing Flatpak apps..."
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.missioncenter.MissionCenter com.obsproject.Studio com.obsproject.Studio.Plugin.DroidCam
 flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
 
