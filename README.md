@@ -8,9 +8,9 @@ By default, when a Bluetooth headset is connected, WirePlumber may auto-switch t
 
 By appending this configuration:
 <pre>
-   wireplumber.settings = {
-     bluetooth.autoswitch-to-headset-profile = false
-   }
+wireplumber.settings = {
+  bluetooth.autoswitch-to-headset-profile = false
+}
 </pre>
 
 ...we instruct WirePlumber to keep the current profile (usually A2DP) and not switch automatically, preserving audio quality for playback.
