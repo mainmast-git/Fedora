@@ -7,9 +7,11 @@ This snippet disables WirePlumber's automatic switching to the HSP/HFP profile.
 By default, when a Bluetooth headset is connected, WirePlumber may auto-switch the headset to the HSP/HFP (hands-free) profile when it detects an input stream. This automatic switch often forces the headset into a lower-quality mode, which is undesirable for users who primarily want high-fidelity audio (A2DP).
 
 By appending this configuration:
+<pre>
    wireplumber.settings = {
      bluetooth.autoswitch-to-headset-profile = false
    }
+</pre>
 
 ...we instruct WirePlumber to keep the current profile (usually A2DP) and not switch automatically, preserving audio quality for playback.
 
