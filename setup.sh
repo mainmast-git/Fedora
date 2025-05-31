@@ -22,9 +22,11 @@ update_system() {
 # Function to enable free & nonfree repositories
 enable_free_nonfree_repositories() {
     echo "Enabling free and nonfree repositories..."
+    sleep 5
     sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
     sudo dnf update -y
+    clear
 }
 
 # Function to install DNF packages
@@ -35,10 +37,14 @@ install_dnf_packages() {
     clear
 }
 
-echo "Installing Flatpak apps..."
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub com.rustdesk.RustDesk com.usebottles.bottles com.spotify.Client io.missioncenter.MissionCenter com.obsproject.Studio com.obsproject.Studio.Plugin.DroidCam
-flatpak install --user -y https://sober.vinegarhq.org/sober.flatpakref
+# Function to setup Flatpak
+setup_flatpak() {
+    echo "Setting up Flatpak and installing apps..."
+    sleep 5
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    xargs -a /tmp/Fedora/packages/flatpak flatpak install -y flathub || { echo "Flatpak app installation failed"; exit 1; } # Install flatpaks
+    clear
+}
 
 # Install .rpm Packages
 echo "Downloading and installing TeamViewer..."
