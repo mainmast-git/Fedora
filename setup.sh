@@ -2,23 +2,38 @@
 
 echo "Starting Fedora Post-Installation Setup..."
 
-# Update & Upgrade System
-echo "Updating and upgrading the system..."
-sudo dnf update -y && sudo dnf upgrade -y && flatpak update -y
+# Check if the script is run as root
+check_user() {
+    if [ "$EUID" -eq 0 ]; then
+      echo "This script must not be run as root. Please run it as a regular user."
+      exit 1
+    fi
+}
 
-# Enable free & nonfree repositories
-echo "Enabling free and nonfree repositories..."
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf update -y
+# Function to update and upgrade system
+update_system() {
+    git clone https://github.com/mainmast-git/Fedora /tmp/Fedora || { echo "Failed to clone Fedora repo"; exit 1; }
+    echo "Updating and upgrading the system..."
+    sleep 5
+    sudo dnf update -y && sudo dnf upgrade -y && flatpak update -y || { echo "System update failed"; exit 1; }
+    clear
+}
 
-# Install APT Packages
-echo "Installing required packages..."
-sudo dnf install -y \
-    vim @virtualization bridge-utils timeshift neovim qdirstat \
-    qt5ct gns3-gui gns3-server tldr fastfetch lsd make trash-cli \
-    fzf bat ripgrep gnome-tweaks fail2ban fastfetch papirus-icon-theme \
-    epapirus-icon-theme google-chrome-stable ufw
+# Function to enable free & nonfree repositories
+enable_free_nonfree_repositories() {
+    echo "Enabling free and nonfree repositories..."
+    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf update -y
+}
+
+# Function to install DNF packages
+install_dnf_packages() {
+    echo "Installing required packages..."
+    sleep 5
+    xargs -a /tmp/Fedora/packages/dnf sudo dnf install -y || { echo "DNF package installation failed"; exit 1; } # Install dnf packages
+    clear
+}
 
 echo "Installing Flatpak apps..."
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
